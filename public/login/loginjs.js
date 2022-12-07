@@ -1,4 +1,3 @@
-
 document.querySelector('#submit-btn').addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -24,7 +23,8 @@ document.querySelector('#submit-btn').addEventListener('click', (e) => {
             if (xhr.status === 201) {
 
                 console.log(JSON.parse(xhr.responseText))
-                window.location.replace("http://localhost:5001/")
+                window.location.replace('views/index.ejs')
+                
             }
             if (xhr.status === 401) {
                 console.log(JSON.parse(xhr.responseText))
