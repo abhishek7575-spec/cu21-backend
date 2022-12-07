@@ -10,37 +10,52 @@ document.querySelector('#submit-btn').addEventListener('click', (e) => {
     }
 
 
-    const xhr = new XMLHttpRequest()
-    const url = '/login'
+    const promise = new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+        const url = '/login'
 
-    xhr.open('POST', url)
+        xhr.open('POST', url)
 
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.setRequestHeader('Access-Control-Allow-Origin', "*")
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.setRequestHeader('Access-Control-Allow-Origin', "*")
 
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 201) {
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 201) {
 
-                console.log(JSON.parse(xhr.responseText))
-                window.location.replace('/')
-                
-            }
-            if (xhr.status === 401) {
-                console.log(JSON.parse(xhr.responseText))
-            }
-            if (xhr.status === 403) {
-                console.log(JSON.parse(xhr.responseText))
+                    resolve(xhr.responseText)
 
+                }
+               else if (xhr.status === 401) {
+                    reject(xhr.responseText)
+                }
+               else if (xhr.status === 403) {
+                    reject(xhr.responseText)
+
+                }
             }
         }
-    }
-    xhr.send(JSON.stringify(user))
+        xhr.send(JSON.stringify(user))
 
+    })
 
+    promise.then((result) => {
+        alert(result)
+        window.location.replace('/')
+    }).catch((err) => {
+        alert(err)
+        return;
+    })
 
 
 })
+
+
+
+
+
+
+
 
 
 

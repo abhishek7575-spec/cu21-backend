@@ -12,16 +12,16 @@ router.post('/',(req,res) => {
         .then((result) => {
 
             if(result == null){
-               return res.status(403).send({message:`No such email is present in our database`})
+               return res.status(403).send(`No such email is present in our database`)
             }
             if (result.password===req.body.passkey){
-              return  res.status(201).json({message:`Welcome to our site ${result.fullName}`})
+              return  res.status(201).send(`Welcome to our site ${result.fullName}`)
             }
             else{
-              return  res.status(401).json({message:`Invalid password for ${result.email}`})
+              return  res.status(401).send(`Invalid password for ${result.email}`)
             }
         })
-        .catch((error) =>  {res.status(500).send({failed:'there is some error in our side',errs:error})})
+        .catch((error) =>  {res.status(500).send(`there is some error in our side${error}`)})
 })
 
 
