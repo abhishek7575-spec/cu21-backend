@@ -77,7 +77,7 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
     }
 
     const xhr = new XMLHttpRequest()
-    const url ='http://localhost:5001/signup'
+    const url ='/signup'
 
 
     xhr.open('POST', url)
