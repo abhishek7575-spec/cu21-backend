@@ -19,16 +19,16 @@ router.post('/',(req,res)=>{
                     password: req.body.passkey
                 })
                 accountuser.save()
-                    .then((results)=>{res.status(201).send({message:`Thank you for registering ${results.fullName}`})})
-                    .catch((err)=>{res.status(500).send({message:`Sorry but there is some error in our side ${err}`})})
+                    .then((results)=>{res.status(201).send(`Thank you for registering ${results.fullName}`)})
+                    .catch((err)=>{res.status(500).send(`Sorry but there is some error in our side ${err}`)})
             }
             else{
-                res.status(403).send({message:"This email is already in use "})
+                res.status(403).send("This email is already in use ")
             }
 
         })
         .catch(err=>{
-            res.status(500).send({message:`Sorry but there is some error in our side ${err}`})
+            res.status(500).send(`Sorry but there is some error in our side ${err}`)
         })
 })
 

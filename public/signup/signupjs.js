@@ -1,3 +1,5 @@
+
+
 document.querySelector('#submit-btn').addEventListener('click', (e)=>{
     e.preventDefault();
     let name =document.getElementById('fullname').value
@@ -75,36 +77,46 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
         account:email,
         passkey:password
     }
-
-    const xhr = new XMLHttpRequest()
-    const url ='/signup'
-
-
-    xhr.open('POST', url)
-
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
-
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4 )
-        {
-            if(xhr.status === 201) 
+    const promise = new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+        const url ='/signup'
+    
+    
+        xhr.open('POST', url)
+    
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
+    
+        xhr.onreadystatechange = () => {
+    
+            if(xhr.readyState === 4 )
             {
-                console.log( 'THANK YOU FOR YOUR REGISTERATION') 
-                console.log( JSON.parse(xhr.response))
+                
+                if(xhr.status === 201) 
+                {
+                    
+                    resolve(xhr.responseText)
+                    
+                }
+               else if(xhr.status === 403){
+                    reject(xhr.responseText)
+                }
+                else if( xhr.status===500)
+                {
+                    reject(xhr.responseText)
+                }
             }
-            if(xhr.status === 403){
-                console.log( 'this email is already registered')
-                console.log(JSON.parse(xhr.response))
-            }
-            if( xhr.status===500)
-            {
-                console.log( 'OOPs something is wrong error is ',JSON.parse(xhr.response))
-            }
+            
         }
-        
-    }
-    xhr.send( JSON.stringify(userdetails) )
+        xhr.send( JSON.stringify(userdetails) )
+    })
+
+    promise.then((result) => {
+        alert(result)
+        window.location.href='/login'
+    })
+    promise.catch((err) => {alert(err)})
+
         
 
     
@@ -114,5 +126,6 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
     document.getElementById('password').value=''
     document.getElementById('repassword').value=''
 
-    window.location.href='/login'
+    
+
 })
