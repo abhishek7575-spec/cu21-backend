@@ -5,7 +5,7 @@ const bodyparser = require('body-parser')
 const cors= require('cors')
 const mongoose = require('mongoose')
 /// Middlewares
-mongoose.connect('mongodb://127.0.0.1:27017/accounts?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0')
+mongoose.connect('mongodb+srv://abhishek:abhishek@cluster0.mjrgwuo.mongodb.net/accounts?retryWrites=true&w=majority')
     .then(() => {console.log(`connection with mongodb established >>`)})
     .catch((err) => {console.log(`connection with mongodb result in error : ${err}`)})
 
