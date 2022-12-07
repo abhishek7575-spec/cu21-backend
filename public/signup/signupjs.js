@@ -114,8 +114,7 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
     promise.then((result) => {
         alert(result)
         window.location.href='/login'
-    })
-    promise.catch((err) => {alert(err)})
+    }).catch((err) => {alert(err)})
 
         
 
