@@ -114,5 +114,5 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
     document.getElementById('password').value=''
     document.getElementById('repassword').value=''
 
-    window.location.href='http://localhost:5001/login'
+    window.location.href='/login'
 })

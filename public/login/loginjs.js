@@ -23,7 +23,7 @@ document.querySelector('#submit-btn').addEventListener('click', (e) => {
             if (xhr.status === 201) {
 
                 console.log(JSON.parse(xhr.responseText))
-                
+                window.location.replace('/')
                 
             }
             if (xhr.status === 401) {
