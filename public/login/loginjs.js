@@ -9,6 +9,31 @@ document.querySelector('#submit-btn').addEventListener('click', (e) => {
         passkey: password
     }
 
+    function isemailvalid(email){
+        var validRegex =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(validRegex.test(email)){
+            return true;
+        }
+        return false;
+    }
+
+    if (!isemailvalid(email)) {
+        alert("Please enter correct email")
+        return;
+    }
+
+    function check(password){
+        if(password.length===0){
+            return false;
+        }
+        return true;
+    }
+
+    if(!check(password)){
+        alert("Please enter correct password")
+        return;
+    }
+
 
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest()
