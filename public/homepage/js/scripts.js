@@ -38,6 +38,12 @@ document.getElementById('submit-btn').addEventListener('click', (e) => {
         
     }
 
+    if (!isnamevalid(name)) {
+        alert("Please enter correct name")
+        return;
+
+    }
+
     if (!isemailvalid(email)) {
         alert("Please enter correct email")
         return;
@@ -49,11 +55,7 @@ document.getElementById('submit-btn').addEventListener('click', (e) => {
         return;
     }
 
-    if (!isnamevalid(name)) {
-        alert("Please enter correct name")
-        return;
-
-    }
+  
 
     const userdetails = {
         fullname: name,
