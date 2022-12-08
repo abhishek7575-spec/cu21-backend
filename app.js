@@ -36,6 +36,9 @@ app.use('/login',login)
 const signup=require('./routes/signup')
 app.use('/signup',signup)
 
+const blog=require('./routes/blog');
+app.use('/blog',blog)
+
 
 app.use( (req, res) => {
     res.status(404).send("404 PAGE NOT FOUND")

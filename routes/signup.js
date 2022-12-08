@@ -23,7 +23,7 @@ router.post('/',(req,res)=>{
                     .catch((err)=>{res.status(500).send(`Sorry but there is some error in our side ${err}`)})
             }
             else{
-                res.status(403).send("This email is already in use ")
+                res.status(200).send("This email is already in use ")
             }
 
         })

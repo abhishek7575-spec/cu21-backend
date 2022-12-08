@@ -26,10 +26,11 @@ document.querySelector('#submit-btn').addEventListener('click', (e) => {
                     resolve(xhr.responseText)
 
                 }
-               else if (xhr.status === 401) {
+               else if (xhr.status === 200) {
                     reject(xhr.responseText)
+                    return;
                 }
-               else if (xhr.status === 403) {
+               else if (xhr.status === 500) {
                     reject(xhr.responseText)
 
                 }

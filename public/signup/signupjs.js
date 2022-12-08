@@ -98,8 +98,9 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
                     resolve(xhr.responseText)
                     
                 }
-               else if(xhr.status === 403){
+               else if(xhr.status === 200){
                     reject(xhr.responseText)
+                    return;
                 }
                 else if( xhr.status===500)
                 {
@@ -114,7 +115,9 @@ document.querySelector('#submit-btn').addEventListener('click', (e)=>{
     promise.then((result) => {
         alert(result)
         window.location.href='/login'
-    }).catch((err) => {alert(err)})
+    }).catch((err) => {alert(err)
+        return;
+    })
 
         
 
